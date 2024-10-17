@@ -1,5 +1,5 @@
 package org.example.project4.WebPacket.configuration;
-import org.example.project4.WebPacket.JWT.JWTRequestFilter;
+import org.example.project4.WebPacket.Domain.JWT.JWTRequestFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
