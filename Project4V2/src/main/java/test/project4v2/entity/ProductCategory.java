@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import test.project4v2.entity.Category;
 
 @Entity
 @AllArgsConstructor

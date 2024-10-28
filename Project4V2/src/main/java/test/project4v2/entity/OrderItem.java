@@ -3,6 +3,7 @@ package test.project4v2.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+
 import lombok.Setter;
 
 @Getter

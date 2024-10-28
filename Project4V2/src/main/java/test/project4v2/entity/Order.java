@@ -8,7 +8,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -26,17 +25,14 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User userId;
+    private User user;
 
     @Column(name = "order_date", updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
-    private LocalDateTime orderDate;
+    private Date orderDate;
 
     @Enumerated(EnumType.STRING)
     private String status;
-    @OneToMany
-    @JoinColumn(name = "item_id")
-    private List<Item> Items;
 
     private Double totalAmount;
     private String shippingAddress;

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class GlobalExceptionHandler {
     @ExceptionHandler(java.lang.Exception.class)
-    public ResponseEntity<Object> handleCustomException(java.lang.Exception ex) {
+    public ResponseEntity<Object> handleCustomException(Exception ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.valueOf(ex.getStatus()));
     }
 

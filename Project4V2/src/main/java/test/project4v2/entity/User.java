@@ -1,42 +1,42 @@
-
 package test.project4v2.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
+import test.project4v2.entity.Entities;
 
-import java.util.Date;
-import java.util.List;
+import java.time.LocalDateTime;
 
-@Table(name = "users")
-@Data
+
+@Entity
 @Getter
 @Setter
-@AllArgsConstructor
+@ToString
+@SuperBuilder
 @NoArgsConstructor
-@Entity
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
+@AllArgsConstructor
+@Table(name = "User")
 
-    @Column(unique = true, nullable = false)
-    private String username;
+public class User extends Entities {
 
-    @Column(unique = true, nullable = false)
-    private String email;
-
-    private String password;
-    private String firstName;
-    private String lastName;
-    private String phone;
+    @Column(name = "name")
+    private String name;
+    @Column(name = "address")
     private String address;
 
-    @Column(name = "created_at", updatable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createdAt;
+    public User
+            (int id, LocalDateTime createDate, LocalDateTime updateDate, String name, String address) {
+        super(id, createDate, updateDate);
+        this.name = name;
+        this.address = address;
+    }
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Order> orders;
-
+    public User(int id, String name, String address) {
+        super(id);
+        this.name = name;
+        this.address = address;
+    }
 
 }
