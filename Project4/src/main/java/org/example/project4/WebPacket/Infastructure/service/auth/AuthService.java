@@ -24,7 +24,6 @@ public class AuthService {
     private PasswordEncoder passwordEncoder;
     @Autowired
     private UserDetailsService userDetailsService;
-
     @Autowired
     private AuthenticationManager authenticationManager;
     @Autowired
@@ -37,7 +36,7 @@ public class AuthService {
 
         User user = new User();
         user.setUsername(userDTO.getUsername());
-        user.setPassword(passwordEncoder.encode(userDTO.getPassword())); // Encrypt password
+        user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
         user = userRepository.save(user);
         return CompletableFuture.completedFuture(new UserDTO(user));
     }
