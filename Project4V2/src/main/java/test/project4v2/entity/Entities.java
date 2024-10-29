@@ -3,7 +3,7 @@ package test.project4v2.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
-import org.springframework.data.annotation.Id;
+
 
 import java.time.LocalDateTime;
 

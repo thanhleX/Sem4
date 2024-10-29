@@ -1,10 +1,7 @@
 package test.project4v2.entity.Oders;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,6 +20,9 @@ public class OrderItems extends Entities {
     @OneToOne
     @JoinColumn(name = "product_id")
     private Product product;
+    @ManyToOne
+    @JoinColumn(name = "order_id")  // Foreign key column
+    private OrderEntity order;
     private int quantity;
 
 

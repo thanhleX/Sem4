@@ -3,8 +3,11 @@ package test.project4v2.dto;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.security.core.userdetails.UserDetails;
+import test.project4v2.entity.User;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 @Getter
 @Setter
@@ -19,6 +22,13 @@ public class UserDTO {
 
     public UserDTO(Long id, String name, String address, LocalDateTime createDate, LocalDateTime updateDate) {
 
+    }
+
+
+
+
+
+    public <E> UserDTO(String username, String password, ArrayList<E> es) {
     }
 
 

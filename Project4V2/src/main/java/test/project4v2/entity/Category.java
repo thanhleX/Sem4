@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Set;
+
 
 @Getter
 @Setter
@@ -19,6 +21,7 @@ public class Category {
     private Long categoryId;
     private String categoryName;
     private String description;
-
+    @OneToMany(mappedBy = "category")
+    private Set<ProductCategory> productCategories;
     // Getters and Setters
 }

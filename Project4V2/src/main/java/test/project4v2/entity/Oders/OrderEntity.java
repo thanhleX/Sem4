@@ -12,6 +12,7 @@ import test.project4v2.entity.Promotion;
 import test.project4v2.entity.User;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Setter
@@ -27,7 +28,7 @@ public class OrderEntity extends Entities {
     private User userId;
 
     @OneToMany(mappedBy = "order")  // Adjust this if OrderItems has a reference to OrderEntity
-    private List<OrderItems> products;
+    private List<OrderItems> products = new ArrayList<>();
 
     @OneToOne
     @JoinColumn(name = "delivery_info_id")

@@ -18,7 +18,6 @@ import java.time.LocalDateTime;
 @Getter
 @Entity
 @NoArgsConstructor
-@EntityListeners({AuditingEntityListener.class})
 public class Review extends Entities {
 
     @OneToOne

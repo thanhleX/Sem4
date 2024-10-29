@@ -9,21 +9,20 @@ import lombok.Setter;
 import test.project4v2.entity.Category;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
+@Table(name = "product_category")
 @Getter
 @Setter
-@Table(name = "ProductCategories")
-public class ProductCategory {
-    @Id
+public class ProductCategory extends Entities {
+
     @ManyToOne
-    @JoinColumn(name = "product_id")
+    @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
-    @Id
+
     @ManyToOne
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "category_id", nullable = false)
     private Category category;
+
 
     // Getters and Setters
 }
