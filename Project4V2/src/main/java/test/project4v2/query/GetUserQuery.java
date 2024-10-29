@@ -13,6 +13,4 @@ import test.project4v2.dto.UserDTO;
 @NoArgsConstructor
 public class GetUserQuery implements Query<UserDTO> {
     private Long userId;
-
-
 }
