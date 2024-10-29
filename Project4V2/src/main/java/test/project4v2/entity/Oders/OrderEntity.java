@@ -24,7 +24,7 @@ public class OrderEntity extends Entities {
 
     @OneToOne
     @JoinColumn(name = "customer_id")
-    private User user;
+    private User userId;
 
     @OneToMany(mappedBy = "order")  // Adjust this if OrderItems has a reference to OrderEntity
     private List<OrderItems> products;
@@ -37,18 +37,20 @@ public class OrderEntity extends Entities {
     @JoinColumn(name = "promotion_id")
     private Promotion promotion;
 
-    public OrderEntity(int id, LocalDateTime createDate, LocalDateTime updateDate, User user,
+    public OrderEntity(Long id, LocalDateTime createDate, LocalDateTime updateDate, User userid,
                        List<OrderItems> products, Delivery deliveryInfo, Promotion promotion) {
         super(id, createDate, updateDate);
-        this.user = user;
+        this.userId = userid;
         this.products = products;
         this.deliveryInfo = deliveryInfo;
         this.promotion = promotion;
     }
+
     public double calculateTotal() {
-       double total = products.stream()
-               .mapToDouble(item -> item.getProduct().getPrice() * item.getQuantity())
-               .sum();
+        double total = products.stream()
+                .mapToDouble(item -> item.getProduct().getPrice() * item.getQuantity())
+                .sum();
         return total;
     }
+
 }

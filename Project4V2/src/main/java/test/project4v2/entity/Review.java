@@ -32,7 +32,7 @@ public class Review extends Entities {
 
 
     public Review
-            (int id, LocalDateTime createDate, LocalDateTime updateDate,
+            (Long id, LocalDateTime createDate, LocalDateTime updateDate,
              Product product, User user, int rating, String comment) {
         super(id, createDate, updateDate);
         this.product = product;

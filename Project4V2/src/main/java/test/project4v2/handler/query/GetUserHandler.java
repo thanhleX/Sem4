@@ -25,7 +25,7 @@ public class GetUserHandler implements QueryHandler<GetUserQuery,UserDTO> {
             return null; // Or throw a custom exception
         }
         // Using constructor to create UserDTO instance
-        return new UserDTO(user.getUserId(), user.getUsername(), user.getEmail(),
-                user.getAddress(), user.getPhone(), user.getPassword());
+        return new UserDTO(user.getId(), user.getName(), user.getAddress(),
+                 user.getCreateDate(),user.getUpdateDate());
     }
 }

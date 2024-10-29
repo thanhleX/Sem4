@@ -6,7 +6,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import test.project4v2.Mediator.Mediator;
 import test.project4v2.dto.OrderDTO;
-import test.project4v2.entity.OrderItem;
+import test.project4v2.entity.Delivery;
+import test.project4v2.entity.Oders.OrderEntity;
+import test.project4v2.entity.Oders.OrderItems;
+import test.project4v2.entity.Promotion;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -17,13 +20,12 @@ import java.util.List;
 @NoArgsConstructor
 public class UpdateOrderCommand implements Mediator.Command<OrderDTO> {
     private Long id;
-    private List<OrderItem> productName;
-    private Integer quantity;
-    private String status;
+    private OrderEntity quantity;
     private Double totalAmount;
-    private LocalDateTime orderDate;
+    private LocalDateTime createDate;
     private String shippingAddress;
-
-
+    private Promotion promotion;
+    private Delivery getDeliveryInfo;
+    public List<OrderItems> Products;
 
 }

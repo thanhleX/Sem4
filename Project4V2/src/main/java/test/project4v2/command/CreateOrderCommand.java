@@ -23,7 +23,7 @@ import java.util.List;
 public class CreateOrderCommand implements Mediator.Command<OrderDTO> {
     @Id
     private User userId;
-    private LocalDateTime orderDate;
+    private LocalDateTime CreateDate;
     private List<Long> productId;
     private List<Integer> quantities;
 

@@ -20,7 +20,7 @@ public class Promotion extends Entities {
 
 
     public Promotion
-            (int id, LocalDateTime createDate, LocalDateTime updateDate,
+            (Long id, LocalDateTime createDate, LocalDateTime updateDate,
              String description, double discountPercentage, LocalDateTime startDate, LocalDateTime endDate) {
         super(id, createDate, updateDate);
         this.description = description;

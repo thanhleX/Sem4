@@ -1,10 +1,7 @@
 package test.project4v2.handler.command;
 
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import test.project4v2.command.CreateUserCommand;
 import test.project4v2.dto.UserDTO;
@@ -28,8 +25,8 @@ public class CreateUserHandler implements CommandHandler<CreateUserCommand, User
         user.setAddress(command.getAddress());
         user.setPhone(command.getPhoneNumber());
         userRepository.save(user);
-        UserDTO UserDTO = new UserDTO();
-        UserDTO.setId(user.getUserId());
+        UserDTO UserDTO = new UserDTO(user.getId(), user.getName(), user.getAddress(), user.getCreateDate(), user.getUpdateDate());
+        UserDTO.setId(user.getId());
         UserDTO.setUsername(user.getUsername());
         UserDTO.setEmail(user.getEmail());
         UserDTO.setAddress(user.getAddress());

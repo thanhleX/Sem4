@@ -26,7 +26,7 @@ public class OrderItems extends Entities {
     private int quantity;
 
 
-    public OrderItems(int id, LocalDateTime createDate, LocalDateTime updateDate, Product product, int quantity) {
+    public OrderItems(Long id, LocalDateTime createDate, LocalDateTime updateDate, Product product, int quantity) {
         super(id, createDate, updateDate);
         if (quantity <= 0) {
 

@@ -23,17 +23,28 @@ public class User extends Entities {
 
     @Column(name = "name")
     private String name;
+    @Column(name = "username")
+    private String username;
     @Column(name = "address")
     private String address;
+    @Column(name = "password")
+    private String password;
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "phone")
+    private String phone;
+
 
     public User
-            (int id, LocalDateTime createDate, LocalDateTime updateDate, String name, String address) {
+            (Long id, LocalDateTime createDate, LocalDateTime updateDate, String name, String address) {
         super(id, createDate, updateDate);
         this.name = name;
         this.address = address;
     }
 
-    public User(int id, String name, String address) {
+    public User(Long id, String name, String address) {
         super(id);
         this.name = name;
         this.address = address;

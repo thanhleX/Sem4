@@ -21,7 +21,7 @@ public class Product extends Entities {
 
 
     public Product
-            (int id, LocalDateTime createDate, LocalDateTime updateDate,
+            (Long id, LocalDateTime createDate, LocalDateTime updateDate,
              String name, String description, double price, int stockQuantity) {
         super(id, createDate, updateDate);
         this.name = name;

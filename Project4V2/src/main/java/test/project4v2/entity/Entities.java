@@ -18,7 +18,7 @@ public abstract class Entities {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
 
     @Column(name = "created_at")
     private LocalDateTime createDate;
@@ -27,7 +27,7 @@ public abstract class Entities {
     private LocalDateTime updateDate;
 
 
-    protected Entities(int id) {
+    protected Entities(Long id) {
         this.id = id;
         this.createDate = LocalDateTime.now();
         this.updateDate = LocalDateTime.now();

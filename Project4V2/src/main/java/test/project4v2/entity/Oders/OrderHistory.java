@@ -20,7 +20,7 @@ public class OrderHistory {
 
     public List<OrderEntity> getOrdersByCustomer(User user) {
         return orders.stream()
-                .filter(order -> order.getUser().equals(user))
+                .filter(order -> order.getUserId().equals(user))
                 .toList();
     }
 }
