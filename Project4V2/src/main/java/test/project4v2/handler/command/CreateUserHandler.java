@@ -1,5 +1,6 @@
 package test.project4v2.handler.command;
 
+import io.netty.handler.codec.MessageAggregationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -18,18 +19,21 @@ public class CreateUserHandler implements CommandHandler<CreateUserCommand, User
     private PasswordEncoder passwordEncoder;
     @Override
     public UserDTO handle(CreateUserCommand command) {
-       User user = new User();
-       user.setUsername(command.getUsername());
+        if (userRepository.existsByUsername(command.getUsername())) {
+            throw new MessageAggregationException("User already exists");
+        }
+        User user = new User();
+        user.setUsername(command.getUsername());
         user.setPassword(passwordEncoder.encode(command.getPassword()));
         user.setEmail(command.getEmail());
         user.setAddress(command.getAddress());
         user.setPhone(command.getPhoneNumber());
         userRepository.save(user);
-        UserDTO UserDTO = new UserDTO(user.getId(), user.getName(), user.getAddress(), user.getCreateDate(), user.getUpdateDate());
-        UserDTO.setId(user.getId());
-        UserDTO.setUsername(user.getUsername());
-        UserDTO.setEmail(user.getEmail());
-        UserDTO.setAddress(user.getAddress());
-        return UserDTO;
+        UserDTO userDTO = new UserDTO(user.getId(), user.getUsername(), user.getAddress(), user.getCreateDate(), user.getUpdateDate());
+        userDTO.setId(user.getId());
+        userDTO.setUsername(user.getUsername());
+        userDTO.setEmail(user.getEmail());
+        userDTO.setAddress(user.getAddress());
+        return userDTO;
     }
 }

@@ -22,7 +22,7 @@ public class UpdateOrderCommand implements Mediator.Command<OrderDTO> {
     private Long id;
     private OrderEntity quantity;
     private Double totalAmount;
-    private LocalDateTime createDate;
+    private LocalDateTime updateDate;
     private String shippingAddress;
     private Promotion promotion;
     private Delivery getDeliveryInfo;

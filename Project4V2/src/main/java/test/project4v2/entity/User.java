@@ -50,4 +50,14 @@ public class User extends Entities {
         this.address = address;
     }
 
+    public User(String username) {
+        this.username = username;
+    }
+
+    public User(String username, String password, String email, String phone) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.phone = phone;
+    }
 }

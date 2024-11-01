@@ -18,4 +18,10 @@ public class CreateUserCommand implements Mediator.Command<UserDTO> {
     private String address;
     private String phoneNumber;
     private String role;
+
+    public UserDTO getUserDTO() {
+
+
+        return new UserDTO(username, password, email, address, phoneNumber);
+    }
 }

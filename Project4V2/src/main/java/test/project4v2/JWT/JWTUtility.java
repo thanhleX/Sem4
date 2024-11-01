@@ -1,5 +1,5 @@
 package test.project4v2.JWT;
-
+import org.springframework.beans.factory.annotation.Value;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -13,11 +13,11 @@ import java.util.concurrent.CompletableFuture;
 
 @Component
 public class JWTUtility {
-    private String secretKey = "ThisIsKey"; // Use a secure key
+    private String secretKey = System.getenv("JWT_SECRET_KEY"); // Use a secure key
 
-    public CompletableFuture<String> generateToken(UserDetails userDetails) {
-        Map<String, Object> claims = new HashMap<>();
-        return createToken(claims, userDetails.getUsername());
+    public CompletableFuture<String> generateToken(String username) {
+
+    return createToken(Map.of(), username);
     }
 
     private CompletableFuture<String> createToken(Map<String, Object> claims, String subject) {

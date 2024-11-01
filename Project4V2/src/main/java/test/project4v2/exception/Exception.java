@@ -14,6 +14,7 @@ public class Exception extends RuntimeException {
     public String getMessage() {
         return message;
     }
+
     public int getStatus() {
         return status;
     }

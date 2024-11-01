@@ -19,7 +19,6 @@ import java.io.IOException;
 
 @Component
 public class JWTRequestFilter extends OncePerRequestFilter {
-    // Implement JWTRequestFilter logic here
     @Autowired
     private JWTUtility jwtUtility;
     @Autowired
@@ -27,7 +26,7 @@ public class JWTRequestFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response
-            , FilterChain filterChain) throws ServletException, IOException {
+            , FilterChain filterChain) {
         final String authorizationHeader = request.getHeader("Authorization");
         String username = null;
         String jwtToken = null;
