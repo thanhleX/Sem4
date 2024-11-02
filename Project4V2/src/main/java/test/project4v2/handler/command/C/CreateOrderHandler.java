@@ -29,8 +29,8 @@ public OrderDTO handle(CreateOrderCommand command) {
     order.setCreateDate(command.getCreateDate());
     List<OrderItems> orderItemsList = IntStream.range(0, command.getProductId().size())
             .mapToObj(i -> {
-                Long productId = command.getProductId().get(i);
-                Integer quantity = command.getQuantities().get(i);
+                Long productId = command.getProductId().get(i).getId();
+                Integer quantity = command.getQuantities().get(i).getStockQuantity();
 
                 Product product = productRepository.findById(productId)
                         .orElseThrow(() -> new RuntimeException("Product not found"));
