@@ -1,14 +1,13 @@
-package test.project4v2.handler.query;
+package test.project4v2.handler.query.R;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import test.project4v2.dto.OrderDTO;
 import test.project4v2.entity.Oders.OrderEntity;
 import test.project4v2.handler.QueryHandler;
 import test.project4v2.query.GetOrderQuery;
 import test.project4v2.repository.OrderRepository;
-
-@Service
+@Component
 public class GetOrderHandler implements QueryHandler<GetOrderQuery, OrderDTO> {
 @Autowired
     private OrderRepository orderRepository;

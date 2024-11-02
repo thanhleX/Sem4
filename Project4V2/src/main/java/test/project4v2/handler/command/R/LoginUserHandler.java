@@ -1,11 +1,11 @@
-package test.project4v2.handler.command;
+package test.project4v2.handler.command.R;
 
 import io.netty.handler.codec.MessageAggregationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import test.project4v2.command.LoginUserCommand;
+import test.project4v2.command.R.LoginUserCommand;
 import test.project4v2.dto.UserDTO;
 import test.project4v2.handler.CommandHandler;
 import test.project4v2.repository.UserRepository;

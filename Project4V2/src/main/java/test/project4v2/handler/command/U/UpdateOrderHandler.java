@@ -1,8 +1,8 @@
-package test.project4v2.handler.command;
+package test.project4v2.handler.command.U;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import test.project4v2.command.UpdateOrderCommand;
+import test.project4v2.command.U.UpdateOrderCommand;
 import test.project4v2.dto.OrderDTO;
 import test.project4v2.entity.Oders.OrderEntity;
 import test.project4v2.handler.CommandHandler;

@@ -1,8 +1,8 @@
-package test.project4v2.handler.command;
+package test.project4v2.handler.command.D;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import test.project4v2.command.DeleteOrderCommand;
+import test.project4v2.command.D.DeleteOrderCommand;
 import test.project4v2.handler.CommandHandler;
 import test.project4v2.repository.OrderRepository;
 @Service

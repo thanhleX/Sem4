@@ -25,6 +25,7 @@ public class Product extends Entities {
     private double price;
     private int stockQuantity;
     private String category;
+
     @OneToMany(mappedBy = "product")
     private Set<ProductCategory> productCategories;
     @OneToMany

@@ -1,4 +1,4 @@
-package test.project4v2.command;
+package test.project4v2.command.R;
 
 import lombok.Getter;
 import lombok.Setter;

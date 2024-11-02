@@ -1,4 +1,4 @@
-package test.project4v2.command;
+package test.project4v2.command.D;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

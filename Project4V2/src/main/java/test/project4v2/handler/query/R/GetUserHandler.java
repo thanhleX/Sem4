@@ -1,13 +1,14 @@
-package test.project4v2.handler.query;
+package test.project4v2.handler.query.R;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
+
 import test.project4v2.dto.UserDTO;
 import test.project4v2.entity.User;
 import test.project4v2.handler.QueryHandler;
 import test.project4v2.query.GetUserQuery;
 import test.project4v2.repository.UserRepository;
-@Service
+@Component
 public class GetUserHandler implements QueryHandler<GetUserQuery,UserDTO> {
 
     private final UserRepository userRepository;

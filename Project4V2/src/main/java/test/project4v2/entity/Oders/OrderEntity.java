@@ -22,7 +22,6 @@ import java.util.List;
 @AllArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
 public class OrderEntity extends Entities {
-
     @OneToOne
     @JoinColumn(name = "customer_id")
     private User userId;
@@ -38,8 +37,11 @@ public class OrderEntity extends Entities {
     @JoinColumn(name = "promotion_id")
     private Promotion promotion;
 
+    @Column(name = "total_amount")
+    private Double totalAmount;
+
     public OrderEntity(Long id, LocalDateTime createDate, LocalDateTime updateDate, User userid,
-                       List<OrderItems> products, Delivery deliveryInfo, Promotion promotion) {
+                        List<OrderItems> products, Delivery deliveryInfo, Promotion promotion) {
         super(id, createDate, updateDate);
         this.userId = userid;
         this.products = products;
