@@ -2,6 +2,7 @@ package test.project4v2.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import test.project4v2.command.C.CreateOrderCommand;
 import test.project4v2.dto.OrderDTO;
 import test.project4v2.dto.OrderItemDTO;
 
@@ -60,5 +61,9 @@ public class OrderService {
         dto.setTotalAmount(order.getTotalAmount());
 
         return dto;
+    }
+
+    public OrderDTO createOrder(CreateOrderCommand createOrderCommand) {
+        return null;
     }
 }

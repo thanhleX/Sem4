@@ -35,7 +35,8 @@ public class User extends Entities {
 
     @Column(name = "phone")
     private String phone;
-
+    @Column(name = "role")
+    private String role;
 
     public User
             (Long id, LocalDateTime createDate, LocalDateTime updateDate, String name, String address) {

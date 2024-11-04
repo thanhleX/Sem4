@@ -10,7 +10,7 @@ import test.project4v2.query.GetProductsIdQuery;
 import test.project4v2.repository.ProductRepository;
 
 @Component
-public class GetProductByIdQueryHandler implements QueryHandler<GetProductsIdQuery, ProductDTO> {
+public class GetProductByIdQuery implements QueryHandler<GetProductsIdQuery, ProductDTO> {
 
     @Autowired
     private  ProductRepository productRepository;

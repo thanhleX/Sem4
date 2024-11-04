@@ -41,7 +41,7 @@ public class OrderController {
 
     // List all orders for a user
     @GetMapping("/user/{userId}")
-    public ResponseEntity<List<UserOrderDTO>> getUserOrders(@PathVariable Long userId) {
+    public ResponseEntity<List<UserOrderDTO>> getUserOrders(@PathVariable User userId) {
         List<UserOrderDTO> orders = mediator.send(new GetUserOrdersQuery(userId));
         return ResponseEntity.ok(orders);
     }

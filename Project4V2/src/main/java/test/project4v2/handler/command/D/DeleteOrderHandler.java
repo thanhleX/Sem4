@@ -12,6 +12,7 @@ public class DeleteOrderHandler implements CommandHandler<DeleteOrderCommand, Vo
     @Override
     public Void handle(DeleteOrderCommand command) {
         orderRepository.deleteById(command.getOrderId());
+        System.out.println("Product deleted successfully.");
         return null;
     }
 }

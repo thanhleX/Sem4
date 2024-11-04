@@ -11,10 +11,10 @@ import test.project4v2.dto.UserDTO;
 import test.project4v2.entity.User;
 import test.project4v2.handler.CommandHandler;
 import test.project4v2.handler.QueryHandler;
-import test.project4v2.handler.query.D.DeleteProductQueryHandler;
-import test.project4v2.handler.query.R.GetAllProductQueryHandler;
-import test.project4v2.handler.query.R.GetProductByIdQueryHandler;
-import test.project4v2.query.GetAllProductQuery;
+import test.project4v2.handler.command.D.DeleteProductHandler;
+import test.project4v2.handler.query.R.GetAllProductQuery;
+import test.project4v2.handler.query.R.GetProductByIdQuery;
+
 import test.project4v2.query.GetProductsIdQuery;
 import test.project4v2.repository.UserRepository;
 
@@ -27,16 +27,16 @@ public class MediatorImpl implements Mediator {
 
 
     @Autowired
-    private GetAllProductQueryHandler getAllProductsQueryHandler;
+    private GetAllProductQuery getAllProductsQueryHandler;
 
     @Autowired
-    private GetProductByIdQueryHandler getProductByIdQueryHandler;
+    private GetProductByIdQuery getProductByIdQueryHandler;
 
     @Autowired
-    private DeleteProductQueryHandler deleteProductCommandHandler;
+    private DeleteProductHandler deleteProductCommandHandler;
 
     @Autowired
-    public MediatorImpl(UserRepository userRepository, ApplicationContext applicationContext, GetAllProductQueryHandler getAllProductQueryHandler) {
+    public MediatorImpl(UserRepository userRepository, ApplicationContext applicationContext, GetAllProductQuery getAllProductQueryHandler) {
         this.userRepository = userRepository;
         this.applicationContext = applicationContext;
         this.getAllProductsQueryHandler = getAllProductQueryHandler;
@@ -104,14 +104,14 @@ public class MediatorImpl implements Mediator {
         }
     }
     public <T> T send(Object commandOrQuery) {
-        if (commandOrQuery instanceof GetAllProductQuery) {
-            return (T) getAllProductsQueryHandler.handle((GetAllProductQuery) commandOrQuery);
+        if (commandOrQuery instanceof test.project4v2.query.GetAllProductQuery) {
+            return (T) getAllProductsQueryHandler.getHandle((test.project4v2.query.GetAllProductQuery) commandOrQuery);
         }
         if (commandOrQuery instanceof GetProductsIdQuery) {
             return (T) getProductByIdQueryHandler.getHandle((GetProductsIdQuery) commandOrQuery);
         }
         if (commandOrQuery instanceof DeleteProductCommand) {
-            deleteProductCommandHandler.getHandle((DeleteProductCommand) commandOrQuery);
+            deleteProductCommandHandler.handle((DeleteProductCommand) commandOrQuery);
             return null;
         }
 

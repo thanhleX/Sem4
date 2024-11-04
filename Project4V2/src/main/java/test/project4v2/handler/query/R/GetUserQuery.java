@@ -6,21 +6,20 @@ import org.springframework.stereotype.Component;
 import test.project4v2.dto.UserDTO;
 import test.project4v2.entity.User;
 import test.project4v2.handler.QueryHandler;
-import test.project4v2.query.GetUserQuery;
 import test.project4v2.repository.UserRepository;
 @Component
-public class GetUserHandler implements QueryHandler<GetUserQuery,UserDTO> {
+public class GetUserQuery implements QueryHandler<test.project4v2.query.GetUserQuery,UserDTO> {
 
     private final UserRepository userRepository;
 
     @Autowired
-    public GetUserHandler(UserRepository userRepository) {
+    public GetUserQuery(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
     @Override
-    public UserDTO getHandle(GetUserQuery query) {
-        User user = userRepository.findById(query.getUserId()).orElse(null);
+    public UserDTO getHandle(test.project4v2.query.GetUserQuery query) {
+        User user = userRepository.findById(query.getUserId().getId()).orElse(null);
 
         if (user == null) {
             return null; // Or throw a custom exception

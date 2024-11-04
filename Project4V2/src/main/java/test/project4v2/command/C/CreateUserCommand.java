@@ -29,8 +29,6 @@ public class CreateUserCommand implements Mediator.Command<UserDTO> {
     }
 
     public UserDTO getUserDTO() {
-
-
         return new UserDTO(username, password, email, address, phoneNumber);
     }
 }

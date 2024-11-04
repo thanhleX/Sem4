@@ -10,6 +10,7 @@ import test.project4v2.Mediator.Mediator;
 import test.project4v2.command.C.CreateUserCommand;
 import test.project4v2.command.R.LoginUserCommand;
 import test.project4v2.dto.UserDTO;
+import test.project4v2.entity.User;
 import test.project4v2.exception.Exception;
 import test.project4v2.query.GetUserQuery;
 
@@ -26,7 +27,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserDTO> getUser(@PathVariable Long id) {
+    public ResponseEntity<UserDTO> getUser(@PathVariable User id) {
         try {
             GetUserQuery query = new GetUserQuery(id);
             UserDTO userDTO = mediator.send(query);
