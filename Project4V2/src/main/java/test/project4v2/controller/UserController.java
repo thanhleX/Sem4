@@ -1,7 +1,10 @@
 package test.project4v2.controller;
 
 
-import jdk.internal.org.jline.utils.Log;
+
+
+
+import org.jline.utils.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +22,7 @@ import test.project4v2.query.GetUserQuery;
 public class UserController {
 
     private final Mediator mediator;
-    private Log logger;
+
 
     @Autowired
     public UserController(Mediator mediator) {
