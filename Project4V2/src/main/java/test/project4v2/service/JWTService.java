@@ -1,7 +1,8 @@
-package test.project4v2.JWT;
+package test.project4v2.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import test.project4v2.JWT.JWTUtility;
 import test.project4v2.entity.Account;
 
 import java.util.concurrent.CompletableFuture;
