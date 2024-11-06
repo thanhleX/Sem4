@@ -1,9 +1,8 @@
 package test.project4v2.JWT;
 
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
-import test.project4v2.entity.UserDetailImpl;
+import test.project4v2.entity.Account;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -11,7 +10,7 @@ import java.util.concurrent.CompletableFuture;
 @AllArgsConstructor
 public class JWTService {
     private final JWTUtility jwtUtility;
-  public CompletableFuture<String> generateToken(UserDetailImpl userDetail) {
+  public CompletableFuture<String> generateToken(Account userDetail) {
       return jwtUtility.generateToken(userDetail.getUsername());
   }
 }
