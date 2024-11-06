@@ -55,7 +55,8 @@ public class ProductController {
     // Get All Products
     @GetMapping
     public ResponseEntity<List<ProductDTO>> getAllProducts() {
-        List<ProductDTO> products = Collections.singletonList(mediator.send(new GetAllProductQuery())); // Directly fetch the list
+        List<ProductDTO> products = mediator.send(new GetAllProductQuery());
+        System.out.println("Retrieved products: " + products);
         return ResponseEntity.ok(products);
     }
 }

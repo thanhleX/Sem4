@@ -9,9 +9,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
-    List<Product> findByCategory(String category);
 
-    List<Product> findByPriceBetween(double minPrice, double maxPrice);
+
+    List<Product> findAll();
 
     @Query("SELECT p FROM Product p JOIN ProductCategory pc ON p.id = pc.product.id WHERE pc.category.categoryId = ?1")
     List<Product> findProductsByCategoryId(Long categoryId);

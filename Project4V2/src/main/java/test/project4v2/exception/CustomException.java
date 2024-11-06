@@ -1,21 +1,21 @@
 package test.project4v2.exception;
 
 
-public class Exception extends RuntimeException {
+import lombok.Getter;
+
+import java.io.Serial;
+
+@Getter
+public class CustomException extends RuntimeException {
+    @Serial
     private static final long serialVersionUID = 1L;
     private final String message;
     private final int status;
 
-    public Exception(String message, int status) {
+    public CustomException(String message, int status) {
         super(message);
         this.message = message;
         this.status = status;
     }
-    public String getMessage() {
-        return message;
-    }
 
-    public int getStatus() {
-        return status;
-    }
 }

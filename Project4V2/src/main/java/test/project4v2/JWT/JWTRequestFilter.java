@@ -1,7 +1,6 @@
 package test.project4v2.JWT;
 
 
-
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -26,22 +25,42 @@ public class JWTRequestFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response
-            , FilterChain filterChain) {
-        final String authorizationHeader = request.getHeader("Authorization");
-        String username = null;
-        String jwtToken = null;
-        if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
-            jwtToken = authorizationHeader.substring(7);
-            username = jwtUtility.extractUsername(jwtToken);
+            , FilterChain filterChain) throws ServletException, IOException {
+        if (this.isWhileList(request)) {
+            filterChain.doFilter(request, response);
+            return;
         }
-        if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+        final String authorizationHeader = request.getHeader("Authorization");
+        boolean hasToken = authorizationHeader != null && authorizationHeader.startsWith("Bearer ");
+        if (!hasToken) {
+            response.setStatus(401);
+            response.getWriter().write("Thieu token");
+            return;
+        }
+
+        try {
+            String jwtToken = authorizationHeader.substring(7);
+            String username = jwtUtility.extractUsername(jwtToken);
+//        if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = userDetailsService.loadUserByUsername(username);
             if (jwtUtility.validateToken(jwtToken, userDetails.getUsername())) {
                 UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
                         new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                 usernamePasswordAuthenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
+
+                filterChain.doFilter(request, response);
+            } else {
+                response.setStatus(403);
+                response.getWriter().write("Invalid token");
             }
+        } catch (Exception e) {
+            response.setStatus(403);
+            response.getWriter().write("Invalid token");
         }
+    }
+
+    private boolean isWhileList(HttpServletRequest request) {
+        return request.getRequestURI().contains("api/test");
     }
 }

@@ -12,7 +12,7 @@ import test.project4v2.entity.User;
 import test.project4v2.handler.CommandHandler;
 import test.project4v2.handler.QueryHandler;
 import test.project4v2.handler.command.D.DeleteProductHandler;
-import test.project4v2.handler.query.R.GetAllProductQuery;
+import test.project4v2.handler.query.R.GetAllProductQueryHandler;
 import test.project4v2.handler.query.R.GetProductByIdQuery;
 
 import test.project4v2.query.GetProductsIdQuery;
@@ -27,7 +27,7 @@ public class MediatorImpl implements Mediator {
 
 
     @Autowired
-    private GetAllProductQuery getAllProductsQueryHandler;
+    private GetAllProductQueryHandler getAllProductsQueryHandler;
 
     @Autowired
     private GetProductByIdQuery getProductByIdQueryHandler;
@@ -36,7 +36,7 @@ public class MediatorImpl implements Mediator {
     private DeleteProductHandler deleteProductCommandHandler;
 
     @Autowired
-    public MediatorImpl(UserRepository userRepository, ApplicationContext applicationContext, GetAllProductQuery getAllProductQueryHandler) {
+    public MediatorImpl(UserRepository userRepository, ApplicationContext applicationContext, GetAllProductQueryHandler getAllProductQueryHandler) {
         this.userRepository = userRepository;
         this.applicationContext = applicationContext;
         this.getAllProductsQueryHandler = getAllProductQueryHandler;

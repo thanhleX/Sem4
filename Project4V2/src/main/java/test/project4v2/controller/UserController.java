@@ -14,7 +14,7 @@ import test.project4v2.command.C.CreateUserCommand;
 import test.project4v2.command.R.LoginUserCommand;
 import test.project4v2.dto.UserDTO;
 import test.project4v2.entity.User;
-import test.project4v2.exception.Exception;
+import test.project4v2.exception.CustomException;
 import test.project4v2.query.GetUserQuery;
 
 @RestController
@@ -35,7 +35,7 @@ public class UserController {
             GetUserQuery query = new GetUserQuery(id);
             UserDTO userDTO = mediator.send(query);
             return ResponseEntity.ok(userDTO);
-        } catch (Exception e) {
+        } catch (CustomException e) {
             Log.warn("User with ID {} not found.", id);
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
@@ -47,7 +47,7 @@ public class UserController {
             LoginUserCommand command = new LoginUserCommand(userDTO.getUsername(), userDTO.getPassword());
             mediator.send(command);
             return ResponseEntity.ok("Login successful.");
-        } catch (Exception e) {
+        } catch (CustomException e) {
             Log.warn("Login failed for user {}: {}", userDTO.getUsername(), e.getMessage());
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password.");
         } catch (java.lang.Exception e) {
@@ -61,7 +61,7 @@ public class UserController {
             CreateUserCommand command = new CreateUserCommand(userDTO.getUsername(), userDTO.getPassword() , userDTO.getEmail(), userDTO.getAddress() , userDTO.getPhone());
             mediator.send(command);
             return ResponseEntity.status(HttpStatus.CREATED).body("User registered successfully.");
-        } catch (Exception e) {
+        } catch (CustomException e) {
             Log.error("Registration failed for user {}: {}", userDTO.getUsername(), e.getMessage());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Registration failed.");
         } catch (java.lang.Exception e) {

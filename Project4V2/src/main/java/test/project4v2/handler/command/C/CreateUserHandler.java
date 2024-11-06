@@ -1,6 +1,5 @@
 package test.project4v2.handler.command.C;
 
-import io.netty.handler.codec.MessageAggregationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -15,16 +14,16 @@ public class CreateUserHandler implements CommandHandler<CreateUserCommand, User
     @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+//    @Autowired
+//    private PasswordEncoder passwordEncoder;
     @Override
     public UserDTO handle(CreateUserCommand command) {
-        if (userRepository.existsByUsername(command.getUsername())) {
-            throw new MessageAggregationException("User already exists");
-        }
+//        if (userRepository.existsByUsername(command.getUsername())) {
+//            throw new MessageAggregationException("User already exists");
+//        }
         User user = new User();
         user.setUsername(command.getUsername());
-        user.setPassword(passwordEncoder.encode(command.getPassword()));
+//        user.setPassword(passwordEncoder.encode(command.getPassword()));
         user.setEmail(command.getEmail());
         user.setAddress(command.getAddress());
         user.setPhone(command.getPhoneNumber());

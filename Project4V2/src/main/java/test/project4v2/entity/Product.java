@@ -50,4 +50,15 @@ public class Product extends Entities {
         return stockQuantity > 0;
     }
 
+    @Override
+    public String toString() {
+        return "Product{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", stockQuantity=" + stockQuantity +
+                ", category='" + category + '\'' +
+                '}';
+
+    }
 }
