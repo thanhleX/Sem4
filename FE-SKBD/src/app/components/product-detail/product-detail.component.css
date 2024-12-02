@@ -1,0 +1,369 @@
+.product-detail-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.product-detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  background: white;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Image Gallery */
+.product-images {
+  position: sticky;
+  top: 2rem;
+}
+
+.main-image {
+  width: 100%;
+  height: 500px;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.main-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumbnail-list {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+}
+
+.thumbnail {
+  width: 80px;
+  height: 80px;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+
+.thumbnail.active {
+  opacity: 1;
+  border: 2px solid #007bff;
+}
+
+.thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Product Info */
+.product-name {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.product-category {
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.product-price {
+  margin-bottom: 2rem;
+}
+
+.current-price {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: #666;
+  margin-left: 1rem;
+}
+
+.discount {
+  background: #28a745;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  margin-left: 1rem;
+}
+
+/* Color Selection */
+.color-selection,
+.size-selection {
+  margin-bottom: 2rem;
+}
+
+.color-options {
+  display: flex;
+  gap: 1rem;
+}
+
+.color-options button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.color-options button.selected {
+  border-color: #007bff;
+  transform: scale(1.1);
+}
+
+/* Size Selection */
+.size-options {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.size-options button {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.size-options button.selected {
+  background: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+/* Quantity Selection */
+.quantity-selection {
+  margin-bottom: 2rem;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.quantity-controls button {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #ddd;
+  background: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.stock-info {
+  color: #666;
+  margin-left: 1rem;
+}
+
+/* Add to Cart Button */
+.add-to-cart-btn {
+  width: 100%;
+  padding: 1rem;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-bottom: 2rem;
+}
+
+.add-to-cart-btn:hover {
+  background: #0056b3;
+}
+
+/* Product Description */
+.product-description,
+.product-details {
+  margin-bottom: 2rem;
+}
+
+.product-details ul {
+  list-style: none;
+  padding: 0;
+}
+
+.product-details li {
+  margin-bottom: 0.5rem;
+  color: #666;
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #007bff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error Message */
+.error-message {
+  text-align: center;
+  color: #dc3545;
+  padding: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .product-detail {
+    grid-template-columns: 1fr;
+  }
+
+  .main-image {
+    height: 300px;
+  }
+
+  .product-images {
+    position: static;
+  }
+}
+
+/* Add these styles to your existing CSS */
+
+.size-selection,
+.color-selection {
+  margin: 2rem 0;
+}
+
+.size-selection h3,
+.color-selection h3 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+/* Size Options */
+.size-options {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.size-button {
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #ddd;
+  background: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.size-button:hover {
+  border-color: #007bff;
+}
+
+.size-button.selected {
+  background: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+/* Color Options */
+.color-options {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.color-button {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #ddd;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.color-button:hover {
+  transform: scale(1.1);
+}
+
+.color-button.selected {
+  border-color: #007bff;
+  transform: scale(1.1);
+}
+
+.color-button .color-name {
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.8rem;
+  white-space: nowrap;
+  color: #666;
+}
+
+/* Special handling for light colors */
+.color-button[style*="background-color: white"] {
+  border-color: #ddd;
+}
+
+.color-button[style*="background-color: white"].selected {
+  border-color: #007bff;
+}
+
+/* Responsive Design */
+@media (max-width: 576px) {
+  .size-options,
+  .color-options {
+    gap: 0.5rem;
+  }
+
+  .size-button {
+    padding: 0.5rem 1rem;
+  }
+
+  .color-button {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+/* Add these styles */
+.product-category {
+  margin: 0.5rem 0 1.5rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+  color: #666;
+}
+
+.category-label {
+  font-weight: 500;
+  margin-right: 0.5rem;
+}
+
+.category-name {
+  color: #007bff;
+  text-transform: capitalize;
+}

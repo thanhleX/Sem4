@@ -1,0 +1,104 @@
+<div class="signup-container">
+    <div class="signup-box">
+        <h2>Create Account</h2>
+        <form (ngSubmit)="onSubmit()" #form="ngForm">
+            <div class="form-group">
+                <label for="username">Username<span class="text-danger">*</span></label>
+                <input type="text" id="username" name="username" [(ngModel)]="signUpForm.username"
+                    (ngModelChange)="validateField('username', $event)" class="form-control" required>
+                <span class="error-message" *ngIf="validationErrors.username">
+                    {{validationErrors.username}}
+                </span>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password<span class="text-danger">*</span></label>
+                <div class="input-group">
+                    <input [type]="showPassword ? 'text' : 'password'" 
+                           id="password" 
+                           name="password" 
+                           [(ngModel)]="signUpForm.password"
+                           (ngModelChange)="validateField('password', $event)" 
+                           class="form-control" 
+                           required>
+                    <i [class]="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"
+                       (click)="togglePasswordVisibility()"
+                       class="password-toggle">
+                    </i>
+                </div>
+                <span class="error-message" *ngIf="validationErrors.password">
+                    {{ validationErrors.password }}
+                </span>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password<span class="text-danger">*</span></label>
+                <div class="input-group">
+                    <input [type]="showConfirmPassword ? 'text' : 'password'"
+                           id="confirmPassword"
+                           name="confirmPassword"
+                           [(ngModel)]="signUpForm.confirmPassword"
+                           (ngModelChange)="validateField('confirmPassword', $event)"
+                           class="form-control"
+                           required>
+                    <i [class]="showConfirmPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"
+                       (click)="toggleConfirmPasswordVisibility()"
+                       class="password-toggle">
+                    </i>
+                </div>
+                <span class="error-message" *ngIf="validationErrors.confirmPassword">
+                    {{ validationErrors.confirmPassword }}
+                </span>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="firstName">First Name<span class="text-danger">*</span></label>
+                    <input type="text" id="firstName" name="firstName" [(ngModel)]="signUpForm.firstName"
+                        class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName">Last Name<span class="text-danger">*</span></label>
+                    <input type="text" id="lastName" name="lastName" [(ngModel)]="signUpForm.lastName"
+                        class="form-control" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email<span class="text-danger">*</span></label>
+                <input type="email" id="email" name="email" [(ngModel)]="signUpForm.email"
+                    (ngModelChange)="validateField('email', $event)" class="form-control" required>
+                <span class="error-message" *ngIf="validationErrors.email">
+                    {{validationErrors.email}}
+                </span>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number<span class="text-danger">*</span></label>
+                <input type="tel" id="phone" name="phone" [(ngModel)]="signUpForm.phone"
+                    (ngModelChange)="validateField('phone', $event)" class="form-control" required>
+                <span class="error-message" *ngIf="validationErrors.phone">
+                    {{validationErrors.phone}}
+                </span>
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="address">Address<span class="text-danger">*</span></label>
+                <textarea id="address" name="address" [(ngModel)]="signUpForm.address" class="form-control" rows="3"
+                    required></textarea>
+            </div>
+
+            <button type="submit" class="btn-signup" [disabled]="!isFormValid()">
+                Sign Up
+            </button>
+
+            <div class="login-link">
+                Already have an account?
+                <a (click)="goToLogin()" class="login-link">Login here</a>
+            </div>
+        </form>
+    </div>
+</div>

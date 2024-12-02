@@ -1,0 +1,26 @@
+footer {
+    padding: 20px 0;
+    background-color: #f8f9fa;
+    color: #6c757d;
+}
+
+footer h5 {
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+footer p,
+footer a {
+    margin-bottom: 0.5rem;
+    color: #6c757d;
+}
+
+footer a:hover {
+    color: #007bff;
+    text-decoration: none;
+}
+
+footer .text-center {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}

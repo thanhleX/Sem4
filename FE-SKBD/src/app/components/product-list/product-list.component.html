@@ -1,0 +1,134 @@
+<div class="product-list-container">
+  <!-- Filter Sidebar -->
+  <aside class="filter-sidebar">
+    <!-- Filter Header -->
+    <div class="filter-actions">
+      <h3>Filters</h3>
+      <button class="clear-filters" (click)="clearFilters()" 
+              [disabled]="!hasActiveFilters()">
+        Clear All
+      </button>
+    </div>
+
+    <!-- Price Filter -->
+    <div class="filter-section">
+      <div class="filter-header" (click)="toggleSection('price')">
+        <h4>Price Range</h4>
+        <i class="fas fa-chevron-down" [class.rotated]="expandedSections.price"></i>
+      </div>
+      <div class="filter-content" [class.expanded]="expandedSections.price">
+        <div class="price-ranges">
+          <div *ngFor="let range of priceRanges" 
+               class="price-range-item"
+               [class.active]="filter.price.min === range.min && filter.price.max === range.max"
+               (click)="setPriceRange(range.min, range.max)">
+            {{ range.label }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Size Filter -->
+    <div class="filter-section">
+      <div class="filter-header" (click)="toggleSection('size')">
+        <h4>Size
+          <span class="filter-badge" *ngIf="filter.sizes.length">
+            {{filter.sizes.length}}
+          </span>
+        </h4>
+        <i class="fas fa-chevron-down" [class.rotated]="expandedSections.size"></i>
+      </div>
+      <div class="filter-content" [class.expanded]="expandedSections.size">
+        <div class="size-options">
+          <div *ngFor="let size of availableSizes" 
+               class="size-option"
+               [class.active]="filter.sizes.includes(size)"
+               (click)="toggleSize(size)">
+            {{ size }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Color Filter -->
+    <div class="filter-section">
+      <div class="filter-header" (click)="toggleSection('color')">
+        <h4>Color
+          <span class="filter-badge" *ngIf="filter.colors.length">
+            {{filter.colors.length}}
+          </span>
+        </h4>
+        <i class="fas fa-chevron-down" [class.rotated]="expandedSections.color"></i>
+      </div>
+      <div class="filter-content" [class.expanded]="expandedSections.color">
+        <div class="color-options">
+          <div *ngFor="let color of availableColors" 
+               class="color-option"
+               [class.active]="filter.colors.includes(color)"
+               (click)="toggleColor(color)">
+            <span class="color-swatch" [style.background-color]="color.toLowerCase()"></span>
+            <span class="color-name">{{ color }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gender Filter -->
+    <div class="filter-section">
+      <div class="filter-header" (click)="toggleSection('gender')">
+        <h4>Gender
+          <span class="filter-badge" *ngIf="filter.gender.length">
+            {{filter.gender.length}}
+          </span>
+        </h4>
+        <i class="fas fa-chevron-down" [class.rotated]="expandedSections.gender"></i>
+      </div>
+      <div class="filter-content" [class.expanded]="expandedSections.gender">
+        <div class="gender-options">
+          <div *ngFor="let gender of availableGender" 
+               class="gender-option"
+               [class.active]="filter.gender.includes(gender)"
+               (click)="toggleGender(gender)">
+            {{ gender }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Product Grid -->
+  <main class="product-grid-container">
+    <!-- Loading State -->
+    <div class="loading-spinner" *ngIf="loading">
+      <div class="spinner"></div>
+    </div>
+
+    <!-- Error Message -->
+    <div class="error-message" *ngIf="error">
+      {{ error }}
+    </div>
+
+    <!-- Products Grid -->
+    <div class="products-grid" *ngIf="!loading && !error">
+      <div class="product-card" *ngFor="let product of products">
+        <div class="product-image">
+          <img [src]="product.imageUrl" [alt]="product.nameProd">
+        </div>
+        <div class="product-info">
+          <h3>{{ product.nameProd }}</h3>
+          <p class="price">${{ product.price }}</p>
+          <div class="rating">Rating: {{ product.rating }}/5</div>
+          <p class="category">{{ product.category.nameCat }}</p>
+          <button class="view-details" [routerLink]="['/products', product.idProd]">
+            View Details
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- No Results -->
+    <div class="no-results" *ngIf="!loading && !error && products.length === 0">
+      No products found matching your filters.
+    </div>
+  </main>
+</div>

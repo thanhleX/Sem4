@@ -1,0 +1,333 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "johndoe",
+      "email": "johndoe@example.com",
+      "password": "hashedpassword",
+      "first_name": "John",
+      "last_name": "Doe",
+      "phone": "123456789",
+      "address": "123 Main St, Cityville",
+      "created_at": "2024-11-30T08:00:00Z"
+    },
+    {
+      "id": 2,
+      "username": "janedoe",
+      "email": "janedoe@example.com",
+      "password": "hashedpassword",
+      "first_name": "Jane",
+      "last_name": "Doe",
+      "phone": "123456789",
+      "address": "123 Main St, Cityville",
+      "created_at": "2024-11-30T08:00:00Z"
+    }
+  ],
+  "admin": [
+    {
+      "id": 1,
+      "username": "admin",
+      "email": "admin@example.com",
+      "password": "hashedadminpassword",
+      "first_name": "Admin",
+      "last_name": "User",
+      "phone": "987654321",
+      "address": "456 Admin Rd, Adminland",
+      "created_at": "2024-11-30T08:00:00Z"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "T-shirt",
+      "description": "A comfortable unisex t-shirt",
+      "gender": "unisex",
+      "created_at": "2024-11-30T08:00:00Z",
+      "attributes": [
+        {
+          "id": 1,
+          "color": "Red",
+          "stock": 100,
+          "size": 42,
+          "price": 19.99
+        },
+        {
+          "id": 2,
+          "color": "Blue",
+          "stock": 50,
+          "size": 40,
+          "price": 18.99
+        }
+      ],
+      "images": [
+        {
+          "id": 1,
+          "image_url": "https://example.com/images/red-tshirt.jpg"
+        },
+        {
+          "id": 2,
+          "image_url": "https://example.com/images/blue-tshirt.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "id": 1,
+          "category_name": "Clothing",
+          "description": "Apparel for men and women"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Jeans",
+      "description": "Stylish denim jeans",
+      "gender": "unisex",
+      "created_at": "2024-11-30T08:10:00Z",
+      "attributes": [
+        {
+          "id": 3,
+          "color": "Black",
+          "stock": 80,
+          "size": 32,
+          "price": 49.99
+        },
+        {
+          "id": 4,
+          "color": "Blue",
+          "stock": 60,
+          "size": 34,
+          "price": 45.99
+        }
+      ],
+      "images": [
+        {
+          "id": 3,
+          "image_url": "https://example.com/images/black-jeans.jpg"
+        },
+        {
+          "id": 4,
+          "image_url": "https://example.com/images/blue-jeans.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "id": 1,
+          "category_name": "Clothing",
+          "description": "Apparel for men and women"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Sneakers",
+      "description": "Comfortable running shoes",
+      "gender": "unisex",
+      "created_at": "2024-11-30T08:20:00Z",
+      "attributes": [
+        {
+          "id": 5,
+          "color": "White",
+          "stock": 120,
+          "size": 9,
+          "price": 59.99
+        }
+      ],
+      "images": [
+        {
+          "id": 5,
+          "image_url": "https://example.com/images/white-sneakers.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "id": 2,
+          "category_name": "Shoes",
+          "description": "Footwear for all occasions"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Jacket",
+      "description": "Warm winter jacket",
+      "gender": "male",
+      "created_at": "2024-11-30T08:30:00Z",
+      "attributes": [
+        {
+          "id": 6,
+          "color": "Green",
+          "stock": 40,
+          "size": 44,
+          "price": 89.99
+        }
+      ],
+      "images": [
+        {
+          "id": 6,
+          "image_url": "https://example.com/images/green-jacket.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "id": 3,
+          "category_name": "Outerwear",
+          "description": "Coats and jackets"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Cap",
+      "description": "Adjustable baseball cap",
+      "gender": "unisex",
+      "created_at": "2024-11-30T08:40:00Z",
+      "attributes": [
+        {
+          "id": 7,
+          "color": "Black",
+          "stock": 150,
+          "size": 1,
+          "price": 15.99
+        }
+      ],
+      "images": [
+        {
+          "id": 7,
+          "image_url": "https://example.com/images/black-cap.jpg"
+        }
+      ],
+      "categories": [
+        {
+          "id": 4,
+          "category_name": "Accessories",
+          "description": "Hats, belts, and more"
+        }
+      ]
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "user_id": 1,
+      "order_date": "2024-11-30T09:00:00Z",
+      "status": "Pending",
+      "total_amount": 135.96,
+      "shipping_address": "123 Main St, Cityville",
+      "items": [
+        {
+          "id": 1,
+          "product_id": 1,
+          "quantity": 2,
+          "price": 19.99
+        },
+        {
+          "id": 2,
+          "product_id": 2,
+          "quantity": 1,
+          "price": 49.99
+        },
+        {
+          "id": 3,
+          "product_id": 3,
+          "quantity": 1,
+          "price": 59.99
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "user_id": 1,
+      "order_date": "2024-11-30T10:00:00Z",
+      "status": "Processing",
+      "total_amount": 89.99,
+      "shipping_address": "123 Main St, Cityville",
+      "items": [
+        {
+          "id": 4,
+          "product_id": 4,
+          "quantity": 1,
+          "price": 89.99
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "user_id": 1,
+      "order_date": "2024-11-30T11:00:00Z",
+      "status": "Shipped",
+      "total_amount": 75.98,
+      "shipping_address": "123 Main St, Cityville",
+      "items": [
+        {
+          "id": 5,
+          "product_id": 2,
+          "quantity": 1,
+          "price": 45.99
+        },
+        {
+          "id": 6,
+          "product_id": 5,
+          "quantity": 2,
+          "price": 15.99
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "user_id": 1,
+      "order_date": "2024-11-30T12:00:00Z",
+      "status": "Delivered",
+      "total_amount": 59.99,
+      "shipping_address": "123 Main St, Cityville",
+      "items": [
+        {
+          "id": 7,
+          "product_id": 3,
+          "quantity": 1,
+          "price": 59.99
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "user_id": 1,
+      "order_date": "2024-11-30T13:00:00Z",
+      "status": "Cancelled",
+      "total_amount": 35.98,
+      "shipping_address": "123 Main St, Cityville",
+      "items": [
+        {
+          "id": 8,
+          "product_id": 5,
+          "quantity": 1,
+          "price": 15.99
+        },
+        {
+          "id": 9,
+          "product_id": 1,
+          "quantity": 1,
+          "price": 19.99
+        }
+      ]
+    }
+  ],
+  "promotions": [
+    {
+      "id": 1,
+      "description": "Black Friday Sale",
+      "created_at": "2024-11-30T08:00:00Z",
+      "products": [
+        {
+          "id": 1,
+          "product_id": 1,
+          "percentage": 20
+        },
+        {
+          "id": 2,
+          "product_id": 2,
+          "percentage": 15
+        }
+      ]
+    }
+  ]
+}

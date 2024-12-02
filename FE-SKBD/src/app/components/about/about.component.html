@@ -1,0 +1,179 @@
+<div class="about-container">
+    <!-- Hero Section -->
+    <section class="hero-section"
+        [style.background-image]="'linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(https://placehold.co/1920x600)'">
+        <div class="hero-content">
+            <h1>About Our Store</h1>
+            <p>Your trusted destination for quality products since 2024</p>
+        </div>
+    </section>
+
+    <!-- About Content -->
+    <section class="about-content">
+        <div class="about-grid">
+            <div class="about-text">
+                <h2>Our Story</h2>
+                <p>Welcome to our online store, where passion meets quality. Founded in 2024, we've been committed to
+                    providing our customers with the best shopping experience possible.</p>
+                <p>Our mission is to deliver high-quality products at competitive prices while maintaining exceptional
+                    customer service. We carefully select each product in our inventory to ensure it meets our strict
+                    quality standards.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://placehold.co/600x400" alt="About Our Store">
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="feature-item">
+                <i class="fas fa-shipping-fast"></i>
+                <h3>Fast Delivery</h3>
+                <p>Quick and reliable shipping to your doorstep</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Secure Payment</h3>
+                <p>Safe and encrypted payment methods</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-headset"></i>
+                <h3>24/7 Support</h3>
+                <p>Always here to help you</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-undo"></i>
+                <h3>Easy Returns</h3>
+                <p>30-day return policy</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq-section" class="faq-section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-container">
+            <!-- FAQ 1 -->
+            <div class="faq-item">
+                <div class="faq-question" (click)="toggleFAQ(0)">
+                    <h3>How can I track my order?</h3>
+                    <i class="fas" [class.fa-chevron-down]="activeFaqIndex !== 0"
+                        [class.fa-chevron-up]="activeFaqIndex === 0"></i>
+                </div>
+                <div class="faq-answer" [@slideInOut]="activeFaqIndex === 0">
+                    <p>You can easily track your order by following these steps:</p>
+                    <ol>
+                        <li>Log in to your account</li>
+                        <li>Go to 'My Orders' section</li>
+                        <li>Click on the specific order you want to track</li>
+                        <li>Click the 'Track Order' button</li>
+                    </ol>
+                    <p>You'll see real-time updates about your order's status, including:</p>
+                    <ul>
+                        <li>Order confirmation</li>
+                        <li>Payment verification</li>
+                        <li>Processing</li>
+                        <li>Shipping</li>
+                        <li>Delivery</li>
+                    </ul>
+                    <p>You'll also receive email notifications for each stage of the delivery process.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="faq-item">
+                <div class="faq-question" (click)="toggleFAQ(1)">
+                    <h3>What is your return and exchange policy?</h3>
+                    <i class="fas" [class.fa-chevron-down]="activeFaqIndex !== 1"
+                        [class.fa-chevron-up]="activeFaqIndex === 1"></i>
+                </div>
+                <div class="faq-answer" [@slideInOut]="activeFaqIndex === 1">
+                    <h4>Return Period:</h4>
+                    <ul>
+                        <li>30 days for unused items in original packaging</li>
+                        <li>7 days for defective items</li>
+                    </ul>
+
+                    <h4>Conditions for Returns:</h4>
+                    <ul>
+                        <li>Item must be unused and in original condition</li>
+                        <li>Original tags and packaging must be intact</li>
+                        <li>Proof of purchase required</li>
+                    </ul>
+
+                    <h4>Exchange Process:</h4>
+                    <ol>
+                        <li>Initiate return through your account</li>
+                        <li>Print return shipping label</li>
+                        <li>Ship item back</li>
+                        <li>Choose replacement item or refund</li>
+                    </ol>
+
+                    <h4>Refund Timeline:</h4>
+                    <ul>
+                        <li>3-5 business days after we receive the return</li>
+                        <li>Original payment method will be refunded</li>
+                    </ul>
+
+                    <p class="note">Note: Shipping costs for returns are customer's responsibility unless item is
+                        defective.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="faq-item">
+                <div class="faq-question" (click)="toggleFAQ(2)">
+                    <h3>What payment methods do you accept?</h3>
+                    <i class="fas" [class.fa-chevron-down]="activeFaqIndex !== 2"
+                        [class.fa-chevron-up]="activeFaqIndex === 2"></i>
+                </div>
+                <div class="faq-answer" [@slideInOut]="activeFaqIndex === 2">
+                    <h4>Credit/Debit Cards:</h4>
+                    <ul>
+                        <li>Visa</li>
+                        <li>MasterCard</li>
+                        <li>American Express</li>
+                        <li>JCB</li>
+                    </ul>
+
+                    <h4>Digital Wallets:</h4>
+                    <ul>
+                        <li>PayPal</li>
+                        <li>Google Pay</li>
+                        <li>Apple Pay</li>
+                    </ul>
+
+                    <h4>Other Methods:</h4>
+                    <ul>
+                        <li>Bank Transfer</li>
+                        <li>Cash on Delivery (select locations)</li>
+                    </ul>
+
+                    <p class="note">All transactions are encrypted and processed through secure payment gateways. We do
+                        not store your credit card information.</p>
+                </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="faq-item">
+                <div class="faq-question" (click)="toggleFAQ(3)">
+                    <h3>Do you offer international shipping?</h3>
+                    <i class="fas" [class.fa-chevron-down]="activeFaqIndex !== 3"
+                        [class.fa-chevron-up]="activeFaqIndex === 3"></i>
+                </div>
+                <div class="faq-answer" [@slideInOut]="activeFaqIndex === 3">
+                    <p>Yes, we offer international shipping to most countries worldwide.</p>
+
+                    <h4>International Shipping Policy:</h4>
+                    <ul>
+                        <li>We ship to most countries worldwide</li>
+                        <li>Shipping costs vary depending on the destination and the weight of the items</li>
+                        <li>We use reliable shipping partners</li>
+                    </ul>
+
+                    <p class="note">Note: International shipping may have additional customs and import duties that are
+                        the responsibility of the customer.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

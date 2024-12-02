@@ -1,0 +1,37 @@
+<div class="verify-container">
+    <div class="verify-box">
+        <h2 class="verify-title">Email Verification</h2>
+        <p class="verify-subtitle">
+            We've sent a verification code to<br>
+            <strong>{{ user?.email }}</strong>
+        </p>
+
+        <div *ngIf="err" class="error-message">
+            {{ err }}
+        </div>
+
+        <form [formGroup]="verifyForm" (ngSubmit)="onValidateEmail()">
+            <div class="verification-code">
+                <input type="text" 
+                       class="code-input" 
+                       formControlName="code"
+                       placeholder="Enter verification code"
+                       maxlength="6"
+                       autocomplete="off">
+            </div>
+
+            <button type="submit" 
+                    class="btn-verify" 
+                    [disabled]="verifyForm.invalid || isSubmitting">
+                {{ isSubmitting ? 'Verifying...' : 'Verify Email' }}
+            </button>
+        </form>
+
+        <div class="resend-code">
+            Didn't receive the code? 
+            <a class="resend-link" (click)="resendVerificationCode()" [class.disabled]="resendTimer > 0">
+                {{ resendTimer > 0 ? 'Resend in ' + resendTimer + 's' : 'Resend' }}
+            </a>
+        </div>
+    </div>
+</div>

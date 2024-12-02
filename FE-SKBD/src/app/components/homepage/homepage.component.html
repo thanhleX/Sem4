@@ -1,0 +1,56 @@
+<!-- Header Image Section -->
+<div class="header-image">
+    <div class="overlay">
+        <h1 class="display-4">Welcome to Our E-Commerce Store</h1>
+        <p class="lead">Discover our amazing products and deals.</p>
+        <a (click)="scrollToProducts()" class="btn btn-primary btn-lg">Shop Now</a>
+    </div>
+</div>
+
+<!-- Top Categories Section -->
+<div class="top-categories">
+  <h2 class="section-title">Top Categories</h2>
+  <div class="categories-container">
+    <div class="category-item" *ngFor="let category of categories">
+      <div class="category-circle" [ngStyle]="{'background-image': 'url(https://via.placeholder.com/400)'}">
+        <a [routerLink]="['/category', category.nameCat.toLowerCase()]"></a>
+      </div>
+      <h3>{{ category.nameCat }}</h3>
+    </div>
+  </div>
+</div>
+
+<!-- Featured Products Section -->
+<section id="featured-products" class="featured-products">
+  <h2>Featured Products</h2>
+  
+  <div class="products-container">
+    <!-- Loading State -->
+    <div class="loading-spinner" *ngIf="loading">
+      <div class="spinner"></div>
+    </div>
+
+    <!-- Error Message -->
+    <div class="error-message" *ngIf="error">
+      {{ error }}
+    </div>
+
+    <!-- Products Grid -->
+    <div class="products-grid" *ngIf="!loading && !error">
+      <div class="product-card" *ngFor="let product of featuredProducts">
+        <div class="product-image">
+          <img [src]="product.imageUrl" [alt]="product.nameProd">
+        </div>
+        <div class="product-info">
+          <h3>{{ product.nameProd }}</h3>
+          <div class="category">{{ product.category.nameCat }}</div>
+          <p class="price">${{ product.price }}</p>
+          <div class="rating">Rating: {{ product.rating }}/5</div>
+          <button class="btn-add-to-cart" [routerLink]="['/products', product.idProd]">
+            View Details
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

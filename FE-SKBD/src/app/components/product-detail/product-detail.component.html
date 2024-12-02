@@ -1,0 +1,59 @@
+<div class="product-detail-container">
+  <!-- Loading State -->
+  <div class="loading-spinner" *ngIf="loading">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Error Message -->
+  <div class="error-message" *ngIf="error">
+    {{ error }}
+  </div>
+
+  <!-- Product Details -->
+  <div class="product-detail" *ngIf="product && !loading">
+    <!-- Image Gallery -->
+    <div class="product-images">
+      <div class="main-image">
+        <img [src]="product.imageUrl" [alt]="product.nameProd">
+      </div>
+    </div>
+
+    <!-- Product Info -->
+    <div class="product-info">
+      <h1 class="product-name">{{ product.nameProd }}</h1>
+      <div class="product-category">
+        <span class="category-label">Category:</span>
+        <span class="category-name">{{ product.category.nameCat }}</span>
+      </div>
+      
+      <div class="product-price">
+        <span class="current-price">${{ product.price }}</span>
+      </div>
+
+      <!-- Rating -->
+      <div class="product-rating">
+        <span>Rating: {{ product.rating }}/5</span>
+      </div>
+
+      <!-- Quantity Selection -->
+      <div class="quantity-selection">
+        <h3>Quantity</h3>
+        <div class="quantity-controls">
+          <button (click)="updateQuantity(-1)">-</button>
+          <span>{{ quantity }}</span>
+          <button (click)="updateQuantity(1)">+</button>
+        </div>
+      </div>
+
+      <!-- Add to Cart Button -->
+      <button class="add-to-cart-btn" (click)="addToCart()">
+        Add to Cart
+      </button>
+
+      <!-- Product Date -->
+      <div class="product-date">
+        <p>Listed on: {{ product.date | date }}</p>
+      </div>
+    </div>
+  </div>
+</div>

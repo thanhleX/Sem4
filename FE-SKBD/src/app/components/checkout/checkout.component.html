@@ -1,0 +1,75 @@
+<div class="checkout-container">
+  <!-- Loading State -->
+  <div class="loading-spinner" *ngIf="loading">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Error Message -->
+  <div class="error-message" *ngIf="error">
+    {{ error }}
+  </div>
+
+  <!-- Order Summary Section -->
+  <div class="order-summary" *ngIf="!loading && !error">
+    <h2>Order Summary</h2>
+    
+    <div class="order-items">
+      <div class="order-item" *ngFor="let item of cartItems">
+        <img [src]="item.product.imageUrl" [alt]="item.product.nameProd">
+        <div class="item-details">
+          <h3>{{item.product.nameProd}}</h3>
+          <p class="category">{{item.product.category.nameCat}}</p>
+          <p class="quantity">Quantity: {{item.quantity}}</p>
+          <p class="price">
+            <span>Price: ${{item.totalExcludeTaxe | number:'1.2-2'}}</span>
+            <span>With Tax: ${{item.totalWithTaxe | number:'1.2-2'}}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="order-total">
+      <span>Total (Including Tax):</span>
+      <span>${{getTotalPrice() | number:'1.2-2'}}</span>
+    </div>
+  </div>
+
+  <!-- Client Information -->
+  <div class="shipping-address" *ngIf="client">
+    <div class="section-header">
+      <h2>Shipping Address</h2>
+      <button class="edit-btn" (click)="isEditingAddress = true" *ngIf="!isEditingAddress">
+        <i class="fas fa-edit"></i> Edit
+      </button>
+    </div>
+
+    <div *ngIf="!isEditingAddress" class="address-display">
+      <p><strong>{{client.firstName}} {{client.lastName}}</strong></p>
+      <p>{{client.phone}}</p>
+      <p>{{client.address}}</p>
+      <p>{{client.state}}</p>
+    </div>
+
+    <form *ngIf="isEditingAddress" class="address-form" (ngSubmit)="updateClientInfo()">
+      <div class="form-group">
+        <input type="text" [(ngModel)]="client.firstName" name="firstName" placeholder="First Name" required>
+      </div>
+      <div class="form-group">
+        <input type="text" [(ngModel)]="client.lastName" name="lastName" placeholder="Last Name" required>
+      </div>
+      <div class="form-group">
+        <input type="tel" [(ngModel)]="client.phone" name="phone" placeholder="Phone Number" required>
+      </div>
+      <div class="form-group">
+        <input type="text" [(ngModel)]="client.address" name="address" placeholder="Address" required>
+      </div>
+      <button type="submit" class="save-btn">Save Address</button>
+    </form>
+  </div>
+
+  <!-- Place Order Button -->
+  <button class="place-order-btn" 
+          (click)="placeOrder()"
+          [disabled]="loading || !client || cartItems.length === 0">
+    Place Order
+  </button>
+</div>

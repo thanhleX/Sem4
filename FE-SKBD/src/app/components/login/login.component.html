@@ -1,0 +1,64 @@
+<div class="login-container">
+    <div class="login-box">
+        <div class="login-header">
+            <h2>Welcome Back!</h2>
+            <p>Please login to your account</p>
+        </div>
+
+        <form (ngSubmit)="onSubmit()" #form="ngForm">
+            <div class="form-group">
+                <label for="username">Username<span class="text-danger">*</span></label>
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="username" name="username" [(ngModel)]="loginForm.username"
+                        class="form-control" placeholder="Enter your username" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password<span class="text-danger">*</span></label>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input [type]="showPassword ? 'text' : 'password'" id="password" name="password"
+                        [(ngModel)]="loginForm.password" class="form-control" placeholder="Enter your password"
+                        required>
+                    <i [class]="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'" (click)="togglePasswordVisibility()"
+                        class="password-toggle">
+                    </i>
+                </div>
+            </div>
+
+            <div class="error-message" *ngIf="errorMessage">
+                {{ errorMessage }}
+            </div>
+
+            <button type="submit" class="btn-login" [disabled]="!form.valid">
+                Login
+            </button>
+
+            <div class="divider">
+                <span>or</span>
+            </div>
+
+            <div class="social-login">
+                <button type="button" class="btn-social google" (click)="loginWithGoogle()">
+                    <i class="fab fa-google"></i>
+                    Login with Google
+                </button>
+            </div>
+
+            <div class="signup-prompt">
+                Don't have an account?
+                <a (click)="goToSignUp()" class="signup-link">Sign up</a>
+            </div>
+
+            <div class="form-group">
+                <div class="d-flex justify-content-center align-items-center mb-3">
+                    <a (click)="goToForgetPass()" class="text-primary forgot-password-link">
+                        Forgot Password?
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

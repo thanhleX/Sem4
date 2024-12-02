@@ -1,0 +1,71 @@
+<div class="cart-container">
+  <!-- Loading State -->
+  <div class="loading-spinner" *ngIf="loading">
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Error Message -->
+  <div class="error-message" *ngIf="error">
+    {{ error }}
+  </div>
+
+  <!-- Cart Content -->
+  <div class="cart-content" *ngIf="!loading && !error">
+    <h1>Shopping Cart</h1>
+
+    <!-- Empty Cart Message -->
+    <div class="empty-cart" *ngIf="cart.cartItems.length === 0">
+      <i class="fas fa-shopping-cart"></i>
+      <p>Your cart is empty</p>
+      <button class="continue-shopping-btn" (click)="continueShopping()">
+        Continue Shopping
+      </button>
+    </div>
+
+    <!-- Cart Items -->
+    <div class="cart-items" *ngIf="cart.cartItems.length > 0">
+      <div class="cart-item" *ngFor="let item of cart.cartItems">
+        <div class="item-image">
+          <img [src]="item.product.imageUrl" [alt]="item.product.nameProd">
+        </div>
+        <div class="item-details">
+          <h3>{{item.product.nameProd}}</h3>
+          <p class="category">{{item.product.category.nameCat}}</p>
+          <div class="price-details">
+            <p class="price">Price: ${{item.product.price}}</p>
+            <p class="subtotal">Subtotal: ${{item.totalExcludeTaxe | number:'1.2-2'}}</p>
+            <p class="total">Total (with tax): ${{item.totalWithTaxe | number:'1.2-2'}}</p>
+          </div>
+          <div class="quantity-controls">
+            <button (click)="updateQuantity(item, -1)">-</button>
+            <span>{{item.quantity}}</span>
+            <button (click)="updateQuantity(item, 1)">+</button>
+          </div>
+        </div>
+        <button class="remove-btn" (click)="removeItem(item)">
+          <i class="fas fa-trash"></i>
+        </button>
+      </div>
+
+      <!-- Cart Summary -->
+      <div class="cart-summary">
+        <div class="summary-row">
+          <span>Total Items:</span>
+          <span>{{cart.totalItems}}</span>
+        </div>
+        <div class="summary-row total">
+          <span>Total (Including Tax):</span>
+          <span>${{getTotalPrice() | number:'1.2-2'}}</span>
+        </div>
+        <div class="cart-actions">
+          <button class="clear-cart-btn" (click)="clearCart()">
+            Clear Cart
+          </button>
+          <button class="checkout-btn" (click)="proceedToCheckout()">
+            Proceed to Checkout
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="forgot-password-container">
+    <div class="forgot-password-box">
+        <div class="forgot-password-header">
+            <h2>Forgot Password?</h2>
+            <p>Enter your email address to reset your password</p>
+        </div>
+
+        <form (ngSubmit)="onSubmit()" #form="ngForm">
+            <div class="form-group">
+                <label for="email">Email Address<span class="text-danger">*</span></label>
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="email" name="email" [(ngModel)]="email" class="form-control"
+                        placeholder="Enter your email address" required email>
+                </div>
+            </div>
+
+            <div class="error-message" *ngIf="errorMessage">
+                {{ errorMessage }}
+            </div>
+
+            <button type="submit" class="btn-submit" [disabled]="!form.valid || isSubmitting">
+                {{ isSubmitting ? 'Sending...' : 'Send Reset Link' }}
+            </button>
+
+            <div class="back-to-login">
+                Remember your password?
+                <a (click)="goToLogin()" class="login-link">Back to Login</a>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="search-container">
+    <div class="search-input-wrapper">
+        <input type="text" [(ngModel)]="searchQuery" (input)="onSearch($event)" (focus)="onFocus()" (blur)="onBlur()"
+            placeholder="Search" class="search-input">
+    </div>
+
+    <div class="search-dropdown" *ngIf="showDropdown && categories.length > 0">
+        <div *ngFor="let category of categories" class="dropdown-item" (click)="selectCategory(category)">
+            {{ category }}
+        </div>
+    </div>
+</div>
