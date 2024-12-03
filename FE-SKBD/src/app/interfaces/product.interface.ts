@@ -1,11 +1,13 @@
-import { Category } from "./category.interface";
+import { Category } from './category.interface';
+import { ProductImage } from './product-image.interface';
 
 export interface Product {
   idProd: number;
   nameProd: string;
   price: number;
   rating: number;
-  date: Date;
-  imageUrl: string;
+  date: string;
+  description: string;
+  images: ProductImage[];
   category: Category;
 }

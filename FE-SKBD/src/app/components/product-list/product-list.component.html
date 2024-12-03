@@ -96,8 +96,26 @@
     </div>
   </aside>
 
-  <!-- Product Grid -->
+  <!-- Product Grid Container -->
   <main class="product-grid-container">
+    <!-- Sort Controls -->
+    <div class="sort-controls">
+      <div class="results-count" *ngIf="!loading">
+        {{ products.length }} Products Found
+      </div>
+      
+      <div class="sort-box">
+        <label for="sortSelect">Sort by:</label>
+        <select id="sortSelect" (change)="onSortChange($event)">
+          <option value="">Default</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="rating-desc">Highest Rated</option>
+          <option value="rating-asc">Lowest Rated</option>
+        </select>
+      </div>
+    </div>
+
     <!-- Loading State -->
     <div class="loading-spinner" *ngIf="loading">
       <div class="spinner"></div>
@@ -110,16 +128,21 @@
 
     <!-- Products Grid -->
     <div class="products-grid" *ngIf="!loading && !error">
-      <div class="product-card" *ngFor="let product of products">
+      <div class="product-card" *ngFor="let product of sortedProducts">
         <div class="product-image">
-          <img [src]="product.imageUrl" [alt]="product.nameProd">
+          <img [src]="product.images[0].url" [alt]="product.nameProd">
+          <div class="product-rating">
+            <span class="rating-badge">
+              <i class="fas fa-star"></i>
+              {{ product.rating }}/5
+            </span>
+          </div>
         </div>
         <div class="product-info">
-          <h3>{{ product.nameProd }}</h3>
-          <p class="price">${{ product.price }}</p>
-          <div class="rating">Rating: {{ product.rating }}/5</div>
-          <p class="category">{{ product.category.nameCat }}</p>
-          <button class="view-details" [routerLink]="['/products', product.idProd]">
+          <h3 class="product-name">{{ product.nameProd }}</h3>
+          <!-- <p class="product-category">{{ product.category.nameCat }}</p> -->
+          <p class="product-price">${{ product.price }}</p>
+          <button class="view-details" (click)="viewProductDetails(product.idProd)">
             View Details
           </button>
         </div>

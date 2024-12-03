@@ -25,7 +25,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ForgetPassComponent } from './components/forget-pass/forget-pass.component';
 import { FooterComponent } from './components/footer/footer.component';
 
-import { TokenInterceptor } from './interceptor/token/token.interceptor';
+import { TokenInterceptor } from './interceptor/token.interceptor';
 import { SearchComponent } from './components/search/search.component';
 import { UppercaseInputDirective } from './directives/uppercase-input.directive';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';

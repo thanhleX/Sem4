@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Observable, throwError, map } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { catchError, retry, tap } from 'rxjs/operators';
 import { Product } from '../../interfaces/product.interface';
 
 export interface PaginatedResponse {
@@ -36,7 +36,21 @@ export class ProductService {
   }
 
   getProductById(id: string): Observable<Product> {
-    return this.http.get<Product>(`${this.apiUrl}/${id}`).pipe(
+    return this.http.get<Product>(`${this.apiUrl}?idProd=${id}`).pipe(
+      tap(product => {
+        console.log('Product data received:', product);
+        if (!product) {
+          throw new Error('Product not found');
+        }
+        if (!product.images || product.images.length === 0) {
+          product.images = [{
+            id: 0,
+            url: 'assets/images/placeholder.jpg',
+            alt: 'Product image not available',
+            isPrimary: true
+          }];
+        }
+      }),
       catchError(this.handleError)
     );
   }

@@ -39,7 +39,7 @@
     <div class="products-grid" *ngIf="!loading && !error">
       <div class="product-card" *ngFor="let product of featuredProducts">
         <div class="product-image">
-          <img [src]="product.imageUrl" [alt]="product.nameProd">
+          <img [src]="product.images[0].url" [alt]="product.nameProd">
         </div>
         <div class="product-info">
           <h3>{{ product.nameProd }}</h3>

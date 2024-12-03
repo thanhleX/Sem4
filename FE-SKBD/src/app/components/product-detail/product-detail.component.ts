@@ -4,6 +4,7 @@ import { ProductService } from '../../services/product/product.service';
 import { Product } from '../../interfaces/product.interface';
 import { CartService } from '../../services/cart/cart.service';
 import { CartItem } from '../../interfaces/cart-item.interface';
+import { ProductImage } from '../../interfaces/product-image.interface';
 
 @Component({
   selector: 'app-product-detail',
@@ -15,6 +16,7 @@ export class ProductDetailComponent implements OnInit {
   quantity: number = 1;
   loading: boolean = true;
   error: string = '';
+  selectedImage: ProductImage | null = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -42,6 +44,10 @@ export class ProductDetailComponent implements OnInit {
         console.error('Error loading product:', err);
       }
     });
+  }
+
+  selectImage(image: ProductImage): void {
+    this.selectedImage = image;
   }
 
   addToCart() {

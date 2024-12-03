@@ -59,6 +59,9 @@ export class ProductListComponent implements OnInit {
     gender: false
   };
 
+  currentSort: string = '';
+  sortedProducts: Product[] = [];
+
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
@@ -96,6 +99,7 @@ export class ProductListComponent implements OnInit {
     this.productService.getProductsByCategory(this.currentCategory).subscribe({
       next: (products) => {
         this.products = this.applyFilters(products);
+        this.sortProducts();
         this.loading = false;
       },
       error: (err) => {
@@ -176,5 +180,37 @@ export class ProductListComponent implements OnInit {
       this.filter.price.min !== 0 ||
       this.filter.price.max !== 1000
     );
+  }
+
+  viewProductDetails(productId: number) {
+    this.router.navigate(['/product', productId]);
+  }
+
+  onSortChange(event: Event) {
+    const select = event.target as HTMLSelectElement;
+    this.currentSort = select.value;
+    this.sortProducts();
+  }
+
+  sortProducts() {
+    this.sortedProducts = [...this.products];
+    
+    switch (this.currentSort) {
+      case 'price-asc':
+        this.sortedProducts.sort((a, b) => a.price - b.price);
+        break;
+      case 'price-desc':
+        this.sortedProducts.sort((a, b) => b.price - a.price);
+        break;
+      case 'rating-desc':
+        this.sortedProducts.sort((a, b) => b.rating - a.rating);
+        break;
+      case 'rating-asc':
+        this.sortedProducts.sort((a, b) => a.rating - b.rating);
+        break;
+      default:
+        // Default sorting (you can implement your own default sort logic)
+        break;
+    }
   }
 }
