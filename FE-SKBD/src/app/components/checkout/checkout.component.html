@@ -15,7 +15,7 @@
     
     <div class="order-items">
       <div class="order-item" *ngFor="let item of cartItems">
-        <img [src]="item.product.imageUrl" [alt]="item.product.nameProd">
+        <img [src]="item.product.images[0]" [alt]="item.product.nameProd">
         <div class="item-details">
           <h3>{{item.product.nameProd}}</h3>
           <p class="category">{{item.product.category.nameCat}}</p>

@@ -26,7 +26,7 @@
     <div class="cart-items" *ngIf="cart.cartItems.length > 0">
       <div class="cart-item" *ngFor="let item of cart.cartItems">
         <div class="item-image">
-          <img [src]="item.product.imageUrl" [alt]="item.product.nameProd">
+          <img [src]="item.product.images[0]" [alt]="item.product.nameProd">
         </div>
         <div class="item-details">
           <h3>{{item.product.nameProd}}</h3>
